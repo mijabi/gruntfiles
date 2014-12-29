@@ -16,6 +16,10 @@ module.exports = function (grunt) {
       ],
       scss: [
         'dev/sass/*.scss'
+      ],
+      css: [
+        'dev/css/a.css',
+        'dev/css/b.css'
       ]
     },
  
@@ -34,6 +38,20 @@ module.exports = function (grunt) {
       dev: {
         options: {
           config: 'config.rb'
+        }
+      }
+    },
+
+
+    cssmin: {
+      minify: {
+        expand: true,
+        cwd: 'dev/css/',
+        src: ['**/*.css', '!**/*.min.css'],
+        dest: 'dev/css/',
+        ext: '.min.css',
+        options: {
+          noAdvanced: true,
         }
       }
     },
@@ -113,6 +131,10 @@ module.exports = function (grunt) {
       options: {
         livereload: true
       },
+      css: {
+        files: ['<%= paths.css %>'],
+        tasks: ['cssmin']
+      },
       js: {
         files: ['<%= paths.javascript %>'],
         tasks: ['jshint', 'concat', 'uglify']
@@ -129,6 +151,7 @@ module.exports = function (grunt) {
  
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -140,7 +163,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['connect', 'watch']);
   grunt.registerTask('develop', ['connect', 'watch']);
   grunt.registerTask('css', ['compass']);
-  grunt.registerTask('build', ['css', 'concat', 'uglify']);
+  grunt.registerTask('build', ['css', 'concat', 'uglify', 'cssmin']);
   grunt.registerTask('release', ['css', 'copy', 'clean', 'concat', 'uglify']);
 
 };
