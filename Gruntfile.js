@@ -18,8 +18,8 @@ module.exports = function (grunt) {
         'dev/sass/*.scss'
       ],
       css: [
-        'dev/css/a.css',
-        'dev/css/b.css'
+        'dev/css/main.css',
+        'dev/css/sub.css'
       ]
     },
  

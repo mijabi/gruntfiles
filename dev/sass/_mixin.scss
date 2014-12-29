@@ -1,0 +1,13 @@
+@mixin ie7 {
+  *:first-child+html & {
+    @content;
+  }
+}
+/*
+:example
+.class {
+  @include ie7 {
+    bottom: -10px;
+  }
+}
+*/

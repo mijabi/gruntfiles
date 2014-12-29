@@ -1,0 +1,71 @@
+@charset 'utf-8';
+
+@import 'compass/css3';
+@import 'compass/utilities/general/clearfix';
+
+@import 'function';
+@import 'mixin';
+@import 'mediaquery';
+
+@import 'parcial/';
+
+
+
+/*
+
+# variables
+
+  $hoge: 100px;
+
+  .hoge {
+    margin-top: $hoge;
+  }
+
+*/
+
+
+/*
+
+# extend
+
+  .extendClass1 {
+    border: 1px solid #dddddd;
+    padding: 5px;
+    margin: 0;
+  }
+
+  .extendClass2 {
+    @extend .extendClass1;
+  }
+    /
+  |/_
+  .extendClass1, .extendClass2 {
+    border: 1px solid #dddddd;
+    padding: 5px;
+    margin: 0;
+  }
+
+*/
+
+
+/*
+
+# placeholder selectors
+
+  %extend-rule {
+    property: value;
+  }
+  .className1 {
+    @extend %extend-rule;
+  }
+  .className2 {
+    @extend %extend-rule;
+  }
+    /
+  |/_
+  .className1,
+  .className2 {
+    property: value;
+  }
+
+*/

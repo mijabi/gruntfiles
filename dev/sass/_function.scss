@@ -1,0 +1,12 @@
+@function addPx($_size) {
+  @return #{$_size}px;
+}
+/*
+:example
+padding-bottom: addPx($_spacing);
+*/
+
+@function sum($a, $b) {
+  @return $a + $b;
+}
+
