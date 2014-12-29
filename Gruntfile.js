@@ -15,7 +15,7 @@ module.exports = function (grunt) {
         'Gruntfile.js'
       ],
       scss: [
-        'dev/sass/*.scss'
+        'dev/sass/**/*.scss'
       ],
       css: [
         'dev/css/main.css',
