@@ -11,7 +11,8 @@ module.exports = function (grunt) {
     paths: {
       javascript: [
         'dev/js/a.js',
-        'dev/js/b.js'
+        'dev/js/b.js',
+        'Gruntfile.js'
       ],
       scss: [
         'dev/sass/*.scss'
@@ -44,11 +45,33 @@ module.exports = function (grunt) {
     },
 
     copy: {
-      dist: {
+      html: {
         expand: true,
+        flattn: false,
         cwd: 'dev/',
-        dest: 'dist',
-        src: '**'
+        src: '**/*.html',
+        dest: 'dist/'
+      },
+      css: {
+        expand: true,
+        flattn: false,
+        cwd: 'dev/',
+        src: 'css/**/*.css',
+        dest: 'dist/'
+      },
+      js: {
+        expand: true,
+        flattn: false,
+        cwd: 'dev/',
+        src: 'js/**/*.js',
+        dest: 'dist/'
+      },
+      img: {
+        expand: true,
+        flattn: false,
+        cwd: 'dev/',
+        src: 'img/*',
+        dest: 'dist/'
       }
     },
 
@@ -61,10 +84,7 @@ module.exports = function (grunt) {
             banner: '<%= general.comment %>' // leave comment
         },
         files: {
-            src: [
-                'dev/js/a.js',
-                'dev/js/b.js'
-            ],
+            src: ['<%= paths.javascript %>'],
             dest: 'dev/js/<%= pkg.name %>.js'
         }
     },
@@ -120,6 +140,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['connect', 'watch']);
   grunt.registerTask('develop', ['connect', 'watch']);
   grunt.registerTask('css', ['compass']);
-  grunt.registerTask('build', ['css', 'copy', 'clean', 'concat', 'uglify']);
+  grunt.registerTask('build', ['css', 'concat', 'uglify']);
+  grunt.registerTask('release', ['css', 'copy', 'clean', 'concat', 'uglify']);
 
 };
