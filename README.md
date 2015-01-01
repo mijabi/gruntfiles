@@ -20,6 +20,8 @@ grunt
 grunt release
 ```
 
+---
+
 ### comment
 
 - main css file name shoule be same as package.json[name]
